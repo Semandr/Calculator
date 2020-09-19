@@ -1,11 +1,7 @@
 let currentResult = 0
 
-function add(x, y) {
-  return x + y
+function add() {
+  currentResult += parseInt(userInput.value)
+  outputResult(currentResult, ``)
 }
-
-currentResult = add(1, 2)
-
-let calculationDescription = `(0 + 10) * 3 / 2 - 1`
-
-outputResult(currentResult, calculationDescription)
+addBtn.addEventListener('click', add)
