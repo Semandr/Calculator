@@ -27,12 +27,23 @@ function writeToLog(
   console.log(logEntries)
 }
 
-function add() {
+function calculateResult(calculationType) {
   const enteredNumber = getUserInput()
   const initialResult = currentResult
-  currentResult += parseInt(userInput.value)
-  createAndWriteOutput("+", initialResult, enteredNumber)
-  writeToLog('ADD', initialResult, enteredNumber, currentResult)
+  let mathOperator
+  if (calculationType === 'ADD') {
+    currentResult += enteredNumber
+    mathOperator = '+'
+  } else {
+    currentResult -= enteredNumber
+    mathOperator = '-'
+  }
+  createAndWriteOutput(mathOperator, initialResult, enteredNumber)
+  writeToLog(calculationType, initialResult, enteredNumber, currentResult)
+}
+
+function add() {
+  calculateResult('ADD')
 }
 
 function subtract() {
