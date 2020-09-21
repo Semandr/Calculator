@@ -28,40 +28,52 @@ function writeToLog(
 }
 
 function calculateResult(calculationType) {
+
+  if (
+    calculationType !== "ADD" &&
+    calculationType !== "SUBTRACT" &&
+    calculationType !== "MULTIPLY" &&
+    calculationType !== "DIVIDE" ||
+    enteredNumber === 0
+  ) {
+    return;
+  }
+
   const enteredNumber = getUserInput()
   const initialResult = currentResult
   let mathOperator
-  if (calculationType === 'ADD') {
+  if (calculationType === "ADD") {
     currentResult += enteredNumber
-    mathOperator = '+'
-  } else if (calculationType === 'SUBTRACT') {
+    mathOperator = "+"
+  } else if (calculationType === "SUBTRACT") {
     currentResult -= enteredNumber
-    mathOperator = '-'
-  } else if (calculationType === 'MULTIPLY') {
+    mathOperator = "-"
+  } else if (calculationType === "MULTIPLY") {
     currentResult *= enteredNumber
-    mathOperator = '*'
+    mathOperator = "*"
   } else {
     currentResult /= enteredNumber
-    mathOperator = '/'
+    mathOperator = "/"
   }
+
   createAndWriteOutput(mathOperator, initialResult, enteredNumber)
   writeToLog(calculationType, initialResult, enteredNumber, currentResult)
 }
 
 function add() {
-  calculateResult('ADD')
+  calculateResult("ADD")
 }
 
 function subtract() {
-  calculateResult('SUBTRACT')
+  calculateResult("SUBTRACT")
 }
 
 function multiply() {
-  calculateResult('MULTIPLY')
+  calculateResult("MULTIPLY")
 }
 
 function divide() {
-  calculateResult('DIVIDE')
+  calculateResult("DIVIDE")
 }
 
 addBtn.addEventListener("click", add)
